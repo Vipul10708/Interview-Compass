@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.npm-cache/
+study-progress-backup*.json
+study-compass-source.zip
+release-upload/
