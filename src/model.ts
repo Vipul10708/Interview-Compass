@@ -10,6 +10,9 @@ export type State = { version: 1; designChecks?: Record<string,boolean>; items: 
 export const groups = ['Front End', 'Back End', 'Database'];
 export const dsaGroups = dsaCurriculum.map(([group])=>group);
 export const todayKey = () => dateKey(new Date());
+export function withDefaultStartDate(state: State): State {
+ return state.settings.startDate ? state : {...state,settings:{...state.settings,startDate:'2026-10-05'}};
+}
 export function dateKey(d: Date) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 export function validDate(s: string) { if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false; const d = new Date(s+'T12:00:00'); return !isNaN(+d) && dateKey(d) === s; }
 export function initialState(): State {
